@@ -1,6 +1,19 @@
 # Changelog — schematize-desktop
 
-Formato: [Keep a Changelog](https://keepachangelog.com/pt-BR/). Versionamento semântico.
+Todas as mudanças relevantes deste pacote, no formato [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
+com versionamento [SemVer](https://semver.org/lang/pt-BR/).
+
+
+## [0.2.0] — 2026-08-21
+O buraco que a vistoria de 2026-08-21 achou: a skill declara **8 pisos VETADOS** e sanciona Tauri/Electron, mas entregava **13 linhas** sobre web-in-native e **zero gates** — `grep 'allowlist|capabilit|permissions'` = **0**. Faltava justamente a parte que decide se o app é seguro: **o que o frontend pode chamar**.
+
+### Adicionado
+- **`references/web-in-native.md`** — os dois modelos, com a tese em uma frase: *no browser um XSS rouba a sessão; aqui ele chama o sistema operacional*. **Tauri 2**: capability (por janela) → permission → **scope**, com o piso da casa (capability mínima por janela; nada de `fs:default` onde há conteúdo de terceiro; `deny` para `**/.ssh/**`, `**/.env`, `**/id_*` — porque `allow` amplo com `deny` explícito falha de forma segura quando alguém alargar depois; chave `dangerous*` só com ADR; CSP definida) e o cheiro de **migração pela metade** (bloco `allowlist` do v1 com `capabilities/` vazio). **Electron**: a tabela de `webPreferences` com o porquê de cada flag, `contextBridge` com **funções nomeadas** (expor `ipcRenderer` ou `send`/`invoke` crus reabre a ponte que o `contextIsolation` fechou), `will-navigate`/`setWindowOpenHandler`, e as **fuses** — sem elas, `ELECTRON_RUN_AS_NODE=1 seu-app` roda código arbitrário **com a assinatura e a reputação do seu app**. ✔ verificado em 2026-08-21 contra Tauri 2 e Electron 38.
+- **`scripts/check-web-in-native.sh`** + **`/desktop-bridge`** — o gate. Reprova `"all": true`, projeto Tauri sem nenhuma capability, scope em `$HOME/**`, `csp: null`, `dangerousRemoteDomainIpcAccess`, `nodeIntegration: true`, `contextIsolation: false`/não declarado (default não conta como decisão), `sandbox: false`, `webSecurity: false`, `exposeInMainWorld` com `ipcRenderer` ou `send`/`invoke` crus, e projeto Electron **sem fuses**. Repo sem nenhum dos dois sai **`2`, não `0`**.
+- **`scripts/check-web-in-native.test.sh`** — **16 casos**, 14 vermelhos de propósito, medidos contra um app de fixture que passa.
+
+### Mudado
+- `references/toolkits-gui.md` §3 passa a apontar para o novo capítulo, com a fronteira escrita: aquela seção decide **se** você empacota web em nativo; a nova decide **o que o frontend pode chamar** depois.
 
 ## [0.1.0] — 2026-08-18
 
