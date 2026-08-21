@@ -1,6 +1,7 @@
 ---
 description: schematize-desktop — carrega à força TODO o corpo normativo (toolkits, empacotamento, auto-update, estado local, privilégio/FS, cross-OS, privacidade/segurança, testes) e passa a aplicá-lo
 ---
+<!-- cross-skill: offline-sync.md -> schematize-mobile -->
 
 Carregue **à força** e passe a aplicar **integralmente** os Padrões de Engenharia de Software
 Local/Desktop da Casa (skill `schematize-desktop`) neste projeto. A partir de agora, nesta sessão,

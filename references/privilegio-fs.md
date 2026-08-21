@@ -2,7 +2,7 @@
 
 > O software local roda **com os privilégios do usuário que o invocou** — e o usuário leigo invoca
 > de qualquer jeito: por menu, por `sudo`, por SSH, por script. Este reference é a materialização
-> desktop do piso **"prever macacos"** (`schematize-engineering` §piso 87 / anti-padrão §37 item
+> desktop do piso **"prever macacos"** (`schematize-engineering` → `references/anti-padroes.md` §37, *"Culpar o usuário / exigir que ele saiba de internals"* item
 > 48): o software **detecta o ambiente e faz o certo sozinho**, nunca culpa o usuário. Dois bugs
 > reais da casa moram aqui: **gravar em `/root` sob sudo** e **launcher que abre o binário errado
 > por depender do PATH do DE**.

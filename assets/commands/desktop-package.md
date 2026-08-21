@@ -2,6 +2,7 @@
 description: schematize-desktop — audita/planeja empacotamento e distribuição cross-OS (.deb/.rpm/AppImage/Flatpak, .dmg+notarization, MSI/MSIX+assinatura; binário pré-compilado vs fonte, híbrido) + smoke de pacote
 argument-hint: "[SO alvo / pipeline de release]"
 ---
+<!-- cross-skill: ops.md -> schematize-engineering -->
 
 Audite/planeje o **empacotamento e a distribuição cross-OS** deste app
 (`references/empacotamento.md`). Premissa: um SO "suportado" sem **pacote testado naquele SO** não

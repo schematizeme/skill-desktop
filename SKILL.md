@@ -2,7 +2,7 @@
 name: schematize-desktop
 metadata:
   version: 0.1.0
-description: Engenharia de software LOCAL/NATIVO/DESKTOP da casa — o mesmo piso (segurança, IAM, testes, ops, DoD, archive) da schematize-engineering, na máquina do usuário, onde NÃO há servidor pra segurar a barra. Irmã de schematize-mobile e schematize-web. Cobre a escolha de toolkit de GUI nativa (viés da casa: Rust + Slint; Tauri com justificativa; egui NÃO como principal — foi fonte de "fantasma de layout"; GTK/Qt; UM só toolkit por produto); empacotamento e distribuição cross-OS (.deb/.rpm/AppImage/Flatpak no Linux, .dmg+notarization no macOS, MSI/MSIX+assinatura no Windows; binário pré-compilado por SO vs compilar-do-fonte — modelo híbrido como o schematize-updater); auto-update DESACOPLADO do app (app quebrado não trava o update e vice-versa; pin/rollback; a armadilha REAL do git-dep pinado no Cargo.lock que faz o binário embutir versão VELHA — `cargo update -p <dep>` antes de compilar; trocar binário em uso, matar processo antigo pós-update, re-exec); offline-first & estado local (dados na máquina, cache, sync eventual, migração de schema local, backup, dirs XDG/por SO); filesystem/permissões/PRIVILÉGIO (rodar como root → descobrir o usuário REAL e gravar PRA ELE, nunca em /root; elevar só onde precisa; .desktop Exec com path ABSOLUTO — o PATH do DE não tem ~/.cargo/bin; single-instance por lock/socket; IPC local); cross-OS de verdade (path/processo/launcher/fontes CJK-árabe/Wayland-X11); privacidade (sem telemetria por padrão, opt-in explícito, local-first); segurança de software local (supply chain de deps nativas, assinatura de binário, NUNCA segredo embutido no cliente); testes de app local (GUI headless/CI, smoke de empacotamento, update ponta-a-ponta). PISOS: UX de massa ("prever macacos" — o software se ADAPTA e nunca culpa o usuário; edge case que um leigo atinge = BUG do software); UM só toolkit de GUI por produto; updater desacoplado + versão embutida sempre coerente; launcher com path absoluto; sem segredo no cliente. Use SEMPRE que for projetar, gerar, revisar ou refatorar app desktop/nativo/local, CLI com GUI, instalador, updater, empacotamento, ou tratar privilégio/root/paths/single-instance/fontes/cross-OS — mesmo sem citar "padrão". Pareia com schematize-engineering (a BASE), schematize-rust (Slint/Tauri em Rust) e schematize-pentest (a máquina do usuário é território hostil).
+description: Engenharia de software LOCAL/NATIVO/DESKTOP da casa — o mesmo piso (segurança, IAM, testes, ops, DoD, archive) na máquina do usuário, onde NÃO há servidor para segurar a barra. Irmã de mobile e web. Cobre escolha de toolkit de GUI (viés Slint/Rust; Tauri com justificativa; UM só toolkit por produto), empacotamento cross-OS (.deb/.rpm/AppImage/Flatpak, .dmg com notarization, MSI/MSIX assinado), auto-update DESACOPLADO (app quebrado não trava o update; pin/rollback; a armadilha do git-dep no lockfile que embute versão VELHA; matar o processo antigo + re-exec), estado local (dirs por SO, migração reversível, backup, sync eventual), privilégio (root → usuário real, elevar só onde precisa, launcher com Exec ABSOLUTO, single-instance), cross-OS, privacidade (sem telemetria por padrão) e testes (GUI headless, smoke de empacotamento, update ponta a ponta). Pisos: UX de massa (o software se adapta e nunca culpa o usuário); nunca segredo no cliente; updater desacoplado; launcher com path absoluto.
 ---
 
 # Engenharia de software local/nativo/desktop da casa (schematize-desktop)
@@ -149,7 +149,7 @@ Independente do reference, estes limites nunca são cruzados:
 ## Relação com as outras skills
 
 - **schematize-engineering** — a **BASE** agnóstica. Esta skill herda e não afrouxa: **UX de massa**
-  ("prever macacos", §piso 87 / anti-padrão §37 item 48 — o piso central aqui), **segurança**
+  ("prever macacos" — o piso central aqui: `schematize-engineering` → `references/anti-padroes.md` §37, *"Culpar o usuário / exigir que ele saiba de internals / quebrar por invocação não-prevista"*), **segurança**
   (segredo nunca no cliente), **IAM** (`iam.md`), **DoD (§35)**, **archive (§28)**, **índice/MAPA
   (§39)**, **cadeia de suprimentos**, **ops**, e o fluxo (scan/plan/refactor/overdev/auditoria).
 - **schematize-rust** — a linguagem principal da GUI desktop da casa: **Slint** e **Tauri** em Rust,
@@ -163,3 +163,9 @@ Independente do reference, estes limites nunca são cruzados:
   local. O app local vira superfície de ataque testável.
 - **schematize-audit** — fecha o loop: os checklists de desktop (toolkit/empacotamento/update/
   privilégio) viram itens **provados**, não marcados na fé.
+
+- **schematize-qa** — a **disciplina de teste**, herdada inteira. O recorte desktop é o *onde roda*
+  (GUI headless em CI com display virtual, smoke de **empacotamento** por SO, teste de update
+  ponta a ponta partindo da versão anterior instalada) — mas a pirâmide, o "verde de verdade", o
+  smoke com self-check, o tratamento de **flaky** e os **gates que travam o merge** são da
+  `schematize-qa`. Instalador que só foi testado na máquina de quem compilou não foi testado.

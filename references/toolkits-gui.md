@@ -1,3 +1,4 @@
+<!-- cross-skill: arquitetura.md, iam.md -> schematize-engineering -->
 # Toolkit de GUI nativa — um só por produto, por fit + ADR (não por gosto)
 
 > A casa **não tem "o toolkit único"** — tem um **rol de opções sancionadas** e um **viés

@@ -1,3 +1,5 @@
+<!-- cross-skill: iam.md -> schematize-engineering -->
+<!-- cross-skill: offline-sync.md -> schematize-mobile -->
 # Offline-first & estado local — o dado vive na máquina do usuário
 
 > No desktop **o normal é offline**: o app abre e funciona sem rede, e o estado do usuário mora na

@@ -1,3 +1,4 @@
+<!-- cross-skill: cadeia-suprimentos.md, ops.md -> schematize-engineering -->
 # Empacotamento e distribuição cross-OS
 
 > O binário É o produto: chega na máquina do usuário como **um pacote instalável do SO**, assinado

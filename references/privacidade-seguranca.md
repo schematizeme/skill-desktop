@@ -1,3 +1,4 @@
+<!-- cross-skill: cadeia-suprimentos.md, iam.md -> schematize-engineering -->
 # Privacidade e segurança do software local
 
 > Na máquina do usuário **não há servidor pra segurar a barra**: o binário É o produto e roda no

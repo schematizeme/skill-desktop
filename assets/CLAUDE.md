@@ -1,3 +1,4 @@
+<!-- cross-skill: offline-sync.md -> schematize-mobile -->
 # CLAUDE.md — Engenharia de Software Local/Desktop da Casa (sempre on)
 
 > Copie para a **raiz do repositório** do app e ajuste `<project>`. Fica pinado no contexto de toda
