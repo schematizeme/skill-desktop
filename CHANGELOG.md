@@ -4,6 +4,20 @@ Todas as mudanças relevantes deste pacote, no formato [Keep a Changelog](https:
 com versionamento [SemVer](https://semver.org/lang/pt-BR/).
 
 
+## [0.3.0] — 2026-08-21
+Segunda leva do saneamento: o inventário da vistoria — quatro conselhos que envelheceram (e um que quebrava a base instalada), o rol de toolkits e a separação entre normativa e postmortem.
+
+### Corrigido
+- **macOS: o procedimento de update preservava a assinatura só por sorte.** Trocar o Mach-O dentro do `.app` **invalida** assinatura e notarização — *e às vezes não na hora, mas na próxima revalidação, que é pior, porque o app "funcionou" e depois parou*. Agora o texto manda baixar o **bundle completo**, **verificar** (`codesign --verify --deep --strict`, `spctl --assess`) e trocar **o diretório inteiro** por `rename` atômico.
+- **Assinatura no Windows estava descrita em termos de 2022.** Desde **junho de 2023** o CA/B exige **chave em hardware**: `.pfx` em secret de CI **não é mais emissível**. Entraram as opções reais (serviço de assinatura na nuvem via API, ou HSM com runner self-hosted), EV vs OV e o impacto no prazo (validação leva dias).
+- **Pinning de certificado em cliente autoatualizável saiu** — *o CDN rotaciona o certificado e o único caminho de conserto, o updater, é exatamente o que parou de funcionar*. No lugar: **assinar o artefato e o manifesto** e verificar antes de instalar, que protege mesmo com o transporte comprometido.
+- **Linux sem folclore:** AppImage **não** "roda em qualquer distro" (glibc do build + FUSE); **Flatpak** exige **`xdg-desktop-portal`** para o app enxergar o mundo (sem portal, o usuário acha que está quebrado); e **Snap** entrou no rol — *é o default do Ubuntu, e ignorá-lo é abrir mão do caminho que o usuário já conhece*.
+
+### Mudado
+- **Rol de toolkits com C#**: **Avalonia / MAUI** (C# está no rol sancionado), com o critério de escolha entre os dois (*Linux importa? então Avalonia*).
+- **Licença passou a ser exigida de todos, inclusive do default**: ✔ o **Slint é tri-licenciado** (GPLv3 · comercial · royalty-free com condições) — era desonesto cobrar ADR de licença só do Qt.
+- **Postmortem saiu do corpo normativo.** As citações a memórias privadas (`gui-launcher-abs-path`, `fix v0.33.1`, `paths.rs`) viraram **o padrão** que elas ensinam — o ambiente do lançador gráfico tem `PATH` mínimo; coexistência de instalações abre a versão errada; uma função central resolve caminhos e migra layout sozinha. O caso específico continua no **archive do projeto**, que é onde ele pertence.
+
 ## [0.2.0] — 2026-08-21
 O buraco que a vistoria de 2026-08-21 achou: a skill declara **8 pisos VETADOS** e sanciona Tauri/Electron, mas entregava **13 linhas** sobre web-in-native e **zero gates** — `grep 'allowlist|capabilit|permissions'` = **0**. Faltava justamente a parte que decide se o app é seguro: **o que o frontend pode chamar**.
 
