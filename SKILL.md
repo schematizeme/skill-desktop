@@ -143,6 +143,7 @@ Independente do reference, estes limites nunca são cruzados:
    nem fonte latina. Path por API do SO, processo por abstração, **fontes com cobertura CJK/árabe**
    (senão o render quebra pra metade do mundo), **Wayland e X11** ambos suportados no Linux. Um SO
    suportado sem **smoke test de empacotamento** naquele SO **não** está suportado.
+9. **Orquestrador não desenvolve; subagent barato executa** (`schematize-engineering` → `references/orquestracao.md` §9): o principal só planeja/decompõe/despacha/revisa; toda ação onerosa vira micro-tasks; subagents em `sonnet` por padrão (falhou → mesmo subagent corrige, até 2 rodadas → re-decompõe → só então `opus`, com motivo no checkpoint). No **overdev**, cada item do checklist é executado por subagent `sonnet` e revisado pelo principal.
 
 > Regra de bolso: se a justificativa começa com "no meu Linux funciona", "o usuário é só rodar
 > certo" ou "depois eu troco o toolkit" e o resultado mexe em privilégio, path, update ou toolkit —
@@ -153,7 +154,7 @@ Independente do reference, estes limites nunca são cruzados:
 - **schematize-engineering** — a **BASE** agnóstica. Esta skill herda e não afrouxa: **UX de massa**
   ("prever macacos" — o piso central aqui: `schematize-engineering` → `references/anti-padroes.md` §37, *"Culpar o usuário / exigir que ele saiba de internals / quebrar por invocação não-prevista"*), **segurança**
   (segredo nunca no cliente), **IAM** (`iam.md`), **DoD (§35)**, **archive (§28)**, **índice/MAPA
-  (§39)**, **cadeia de suprimentos**, **ops**, e o fluxo (scan/plan/refactor/overdev/auditoria).
+  (§39)**, **cadeia de suprimentos**, **ops**, e o fluxo (scan/plan/refactor/overdev/auditoria) — no laço do overdev cada item é executado por subagent `sonnet` e revisado pelo principal (`schematize-engineering` → `references/orquestracao.md` §9).
 - **schematize-rust** — a linguagem principal da GUI desktop da casa: **Slint** e **Tauri** em Rust,
   o `schematize-updater`, o modelo híbrido binário|fonte. Os pisos de código (arquivo/função/índice)
   saem de lá.

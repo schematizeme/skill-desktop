@@ -38,7 +38,7 @@ unzip skill-desktop.zip -d .claude/skills/
 
 ## O que tem dentro
 
-- **SKILL.md** — o contrato: 8 pisos inegociáveis (o piso da casa é o mesmo; **UX de massa — prever
+- **SKILL.md** — o contrato: 9 pisos inegociáveis (o piso da casa é o mesmo; **UX de massa — prever
   macacos**; **um só toolkit de GUI por produto**; **updater desacoplado + versão embutida
   coerente**; **launcher com path absoluto**; **sem segredo no cliente**; privilégio mínimo +
   privacidade por padrão; cross-OS é requisito) + mapa de references.

@@ -47,6 +47,7 @@ relaxa" e este piso, **o piso vence**. Consulte o reference antes de agir — n�
    antes de operação destrutiva**, escrita **atômica**. Perder o dado do usuário num update é o pior
    pecado. Se há sync, herda `offline-sync.md` (outbox durável, conflito explícito, servidor
    autoritativo).
+9. **Orquestrador não desenvolve; subagent barato executa** (`schematize-engineering` → `references/orquestracao.md` §9). O agent principal (o que fala com o humano, modelo padrão da sessão) **só planeja, decompõe, despacha, supervisiona e revisa** — não escreve código de entrega. Toda ação onerosa é quebrada em **micro-tasks/micro-funções** executáveis por agent barato. Subagents rodam em **`sonnet` por padrão**; falhou → o **mesmo subagent corrige** (até 2 rodadas) → re-decompõe → só então **`opus`**, com motivo registrado no checkpoint. O principal revisa toda entrega (diff + gate) e **só corrige com a própria mão se necessário**. No **overdev**, cada item do checklist é executado por subagent `sonnet` e revisado pelo principal antes do `- [x]`.
 
 ## Como se decide aqui
 
