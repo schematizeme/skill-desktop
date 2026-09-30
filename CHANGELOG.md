@@ -4,6 +4,12 @@ Todas as mudanças relevantes deste pacote, no formato [Keep a Changelog](https:
 com versionamento [SemVer](https://semver.org/lang/pt-BR/).
 
 
+## [0.4.1] — 2026-09-30
+Pedido do dono: agents idle poluem a tela e seguram recurso.
+
+### Adicionado
+- Piso de orquestração ganha a regra de frota ociosa (idle com pendência volta ao trabalho; dependente de outro agent → mata e enfileira com gatilho; terminou → mata); detalhe na `schematize-engineering` §9.6.
+
 ## [0.4.0] — 2026-09-30
 Pedido do dono: **custo** — orquestrador em modelo padrão não desenvolve; micro-tasks baratas; `sonnet` como default nos subagents, `opus` só após falha.
 

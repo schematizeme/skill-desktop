@@ -143,7 +143,7 @@ Independente do reference, estes limites nunca são cruzados:
    nem fonte latina. Path por API do SO, processo por abstração, **fontes com cobertura CJK/árabe**
    (senão o render quebra pra metade do mundo), **Wayland e X11** ambos suportados no Linux. Um SO
    suportado sem **smoke test de empacotamento** naquele SO **não** está suportado.
-9. **Orquestrador não desenvolve; subagent barato executa** (`schematize-engineering` → `references/orquestracao.md` §9): o principal só planeja/decompõe/despacha/revisa; toda ação onerosa vira micro-tasks; subagents em `sonnet` por padrão (falhou → mesmo subagent corrige, até 2 rodadas → re-decompõe → só então `opus`, com motivo no checkpoint). No **overdev**, cada item do checklist é executado por subagent `sonnet` e revisado pelo principal.
+9. **Orquestrador não desenvolve; subagent barato executa** (`schematize-engineering` → `references/orquestracao.md` §9): o principal só planeja/decompõe/despacha/revisa; toda ação onerosa vira micro-tasks; subagents em `sonnet` por padrão (falhou → mesmo subagent corrige, até 2 rodadas → re-decompõe → só então `opus`, com motivo no checkpoint). No **overdev**, cada item do checklist é executado por subagent `sonnet` e revisado pelo principal. **Sem frota ociosa:** agent idle com pendência executável volta ao trabalho; pendência que depende de outro agent → mata e enfileira com gatilho de dependência; terminou → mata (§9.6).
 
 > Regra de bolso: se a justificativa começa com "no meu Linux funciona", "o usuário é só rodar
 > certo" ou "depois eu troco o toolkit" e o resultado mexe em privilégio, path, update ou toolkit —
