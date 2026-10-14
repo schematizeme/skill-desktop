@@ -1,7 +1,7 @@
 ---
 name: schematize-desktop
 metadata:
-  version: 0.5.1
+  version: 0.6.0
 description: >-
   App desktop/nativo: toolkit de GUI (Slint, Tauri), empacotamento cross-OS, auto-update, estado local, privilégio. Use ao revisar app desktop, instalador, updater ou tauri.conf.json.
 ---
@@ -31,7 +31,7 @@ um serviço do **rol sancionado** (Go/Rust/Elixir/C#/Zig/Ruby) e ao **IAM como a
 
 > **Toolkits:** o rol, o viés (Slint default; egui não como principal) e a licença de cada um moram em `references/toolkits-gui.md` (dono único). O `schematize-updater` é o modelo de updater híbrido (binário|fonte) desacoplado.
 
-**Versão:** skill `schematize-desktop` v0.5.1. Changelog em `CHANGELOG.md`.
+**Versão:** skill `schematize-desktop` v0.6.0. Changelog em `CHANGELOG.md`.
 
 ## Comandos (Claude Code)
 
