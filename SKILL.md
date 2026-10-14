@@ -3,9 +3,8 @@ name: schematize-desktop
 metadata:
   version: 0.5.0
 description: >-
-  Engenharia de software desktop/nativo, na máquina do usuário: toolkit de GUI (Slint, Tauri), empacotamento
-  cross-OS, auto-update desacoplado, estado local, privilégio e privacidade. Use ao projetar ou revisar app desktop,
-  instalador, updater, .desktop ou tauri.conf.json.
+  Engenharia de app desktop/nativo: toolkit de GUI (Slint, Tauri), empacotamento cross-OS, auto-update desacoplado,
+  estado local, privilégio e privacidade. Use ao revisar app desktop, instalador, updater ou tauri.conf.json.
 ---
 
 # Engenharia de software local/nativo/desktop da casa (schematize-desktop)
