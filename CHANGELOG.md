@@ -12,6 +12,7 @@ Electron/Tauri reverificados e tabela de toolkits com dono único.
 - Tabela de toolkits estava em 3 lugares (`SKILL.md`, `stack-versoes.md`, `toolkits-gui.md`); dono único agora é `toolkits-gui.md`, os outros apontam. *Por quê:* três cópias divergem.
 - `SKILL.md`: "linguagem principal da GUI" (rust) reescrito sem hierarquia de linguagens.
 - `description` em `>-` (YAML antes inválido) com 350 caracteres ou menos.
+- **Description** reduzida (~270 chars) para caber no orçamento de listagem (soma das 31 skills ≤ 8500; o Claude Code corta a listagem acima disso).
 
 ## [0.4.2] — 2026-09-30
 O piso de orquestração passa a ser **herdado** da base em vez de copiado à mão: uma mudança na engineering não exige mais editar 38 arquivos.
