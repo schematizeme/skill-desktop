@@ -2,7 +2,8 @@
 name: schematize-desktop
 metadata:
   version: 0.4.2
-description: Engenharia de software LOCAL/NATIVO/DESKTOP da casa — o mesmo piso (segurança, IAM, testes, ops, DoD, archive) na máquina do usuário, onde NÃO há servidor para segurar a barra. Irmã de mobile e web. Cobre escolha de toolkit de GUI (viés Slint/Rust; Tauri com justificativa; UM só toolkit por produto), empacotamento cross-OS (.deb/.rpm/AppImage/Flatpak, .dmg com notarization, MSI/MSIX assinado), auto-update DESACOPLADO (app quebrado não trava o update; pin/rollback; a armadilha do git-dep no lockfile que embute versão VELHA; matar o processo antigo + re-exec), estado local (dirs por SO, migração reversível, backup, sync eventual), privilégio (root → usuário real, elevar só onde precisa, launcher com Exec ABSOLUTO, single-instance), cross-OS, privacidade (sem telemetria por padrão) e testes (GUI headless, smoke de empacotamento, update ponta a ponta). Pisos: UX de massa (o software se adapta e nunca culpa o usuário); nunca segredo no cliente; updater desacoplado; launcher com path absoluto.
+description: >-
+  Engenharia de software desktop/nativo da casa, na máquina do usuário: toolkit de GUI (Slint, Tauri), empacotamento cross-OS, auto-update desacoplado, estado local, privilégio e privacidade. Use ao projetar, empacotar ou revisar app desktop, instalador, updater, .desktop/launcher, Cargo.toml de GUI ou tauri.conf.json.
 ---
 
 # Engenharia de software local/nativo/desktop da casa (schematize-desktop)
@@ -28,10 +29,7 @@ afrouxar nenhum piso**. Um app local não é ilha: quando fala com backend, dele
 um serviço do **rol sancionado** (Go/Rust/Elixir/C#/Zig/Ruby) e ao **IAM como app separada** em
 `auth.<domain>` (`iam.md`). O binário local é conveniência de UX, nunca o guardião do segredo.
 
-> **Viés da casa (explícito):** a casa constrói GUI desktop em **Rust + Slint** (ver a própria
-> `schematize_gui_slint`). Slint é o default; Tauri entra com justificativa; **egui NÃO é o
-> principal** (foi fonte concreta de "fantasma de layout"). O `schematize-updater` é o modelo de
-> updater híbrido (binário|fonte) desacoplado.
+> **Toolkits:** o rol, o viés (Slint default; egui não como principal) e a licença de cada um moram em `references/toolkits-gui.md` (dono único). O `schematize-updater` é o modelo de updater híbrido (binário|fonte) desacoplado.
 
 **Versão:** skill `schematize-desktop` v0.4.2. Changelog em `CHANGELOG.md`.
 
@@ -155,8 +153,8 @@ Independente do reference, estes limites nunca são cruzados:
   ("prever macacos" — o piso central aqui: `schematize-engineering` → `references/anti-padroes.md` §37, *"Culpar o usuário / exigir que ele saiba de internals / quebrar por invocação não-prevista"*), **segurança**
   (segredo nunca no cliente), **IAM** (`iam.md`), **DoD (§35)**, **archive (§28)**, **índice/MAPA
   (§39)**, **cadeia de suprimentos**, **ops**, e o fluxo (scan/plan/refactor/overdev/auditoria) — no laço do overdev cada item é executado por subagent `sonnet` e revisado pelo principal (`schematize-engineering` → `references/orquestracao.md` §9).
-- **schematize-rust** — a linguagem principal da GUI desktop da casa: **Slint** e **Tauri** em Rust,
-  o `schematize-updater`, o modelo híbrido binário|fonte. Os pisos de código (arquivo/função/índice)
+- **schematize-rust** — a linguagem em que a GUI desktop da casa (**Slint**, **Tauri**) e o `schematize-updater` são escritos —
+  o modelo híbrido binário|fonte. Os pisos de código (arquivo/função/índice)
   saem de lá.
 - **schematize-mobile / schematize-web** — as **irmãs**: mesmo piso, cliente diferente. Web = o
   servidor segura a barra; mobile = cliente hostil na loja; **desktop = cliente hostil na máquina do

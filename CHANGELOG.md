@@ -4,6 +4,15 @@ Todas as mudanças relevantes deste pacote, no formato [Keep a Changelog](https:
 com versionamento [SemVer](https://semver.org/lang/pt-BR/).
 
 
+## [0.5.0] — 2026-10-14
+Electron/Tauri reverificados e tabela de toolkits com dono único.
+
+### Corrigido
+- `references/web-in-native.md`: "Electron 38" estava obsoleto; verificado em 2026-10-14 contra Electron 42-44 (suporte = 3 últimas majors; 45 prevista para 20/10/2026, quando a 42 sai) e Tauri 2.x. Flags e fuses seguem válidos.
+- Tabela de toolkits estava em 3 lugares (`SKILL.md`, `stack-versoes.md`, `toolkits-gui.md`); dono único agora é `toolkits-gui.md`, os outros apontam. *Por quê:* três cópias divergem.
+- `SKILL.md`: "linguagem principal da GUI" (rust) reescrito sem hierarquia de linguagens.
+- `description` em `>-` (YAML antes inválido) com 350 caracteres ou menos.
+
 ## [0.4.2] — 2026-09-30
 O piso de orquestração passa a ser **herdado** da base em vez de copiado à mão: uma mudança na engineering não exige mais editar 38 arquivos.
 

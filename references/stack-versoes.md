@@ -4,20 +4,20 @@
 > assinatura e regra de notarization mudam. O corpo normativo diz **princípio**; o que tem prazo
 > mora aqui. O lint do catálogo (regra `anexo-volatil`) reprova versão cravada fora daqui.
 >
-> **Verificado em: 2026-08-21.** Cadência: **revisão trimestral**, e sempre antes de um release.
+> **Verificado em: 2026-10-14** (Electron/Tauri; o resto da tabela de SO segue em 2026-08-21). Cadência: **revisão trimestral**, e sempre antes de um release.
 
 ## Toolkits de GUI
 
-| Toolkit | Posição da casa | Nota |
-|---|---|---|
-| **Slint** (Rust) | **viés preferencial** para produto novo | declarativo, sem runtime web; casa com o backend do rol |
-| **Tauri** | aceito **com justificativa em ADR** | traz webview do sistema: herda o piso de `schematize-web` §43.9 — **XSS vira RCE local** se a ponte for ampla; allowlist mínima de comandos |
-| **Electron** | aceito **com justificativa em ADR** | `contextIsolation: true` + `nodeIntegration: false` **sem exceção**; ponte por `contextBridge` com allowlist |
-| **egui** | **não** como principal | modo imediato: o "fantasma de layout" reaparece a cada release |
-| **GTK / Qt** | aceitos por fit (integração de desktop Linux, licença do Qt em ADR) | |
+O rol, o viés da casa, a posição de cada toolkit e a licença estão em `toolkits-gui.md` (**dono único** — não repetir a tabela aqui).
+O que é volátil e mora aqui são as versões e prazos dos web-in-native:
 
-> **UM toolkit por produto.** Dois toolkits = dois bugs de layout, dois pipelines de empacotamento
-> e duas matrizes de teste. Isso **não é volátil** e mora no corpo normativo.
+| Item | Estado (verificado em 2026-10-14) | Nota |
+|---|---|---|
+| **Electron** | suporte oficial = **3 últimas majors estáveis**, só a minor mais nova de cada; cadência de 8 semanas. Hoje **42, 43, 44** (44.7.2); a **45** estável é prevista para 20/10/2026, quando a **42** sai de suporte | travar em major fora do suporte é rodar Chromium sem patch; datas seguem o Chromium e podem mudar (`electronjs.org` → timelines) |
+| **Tauri** | **2.x** (CLI 2.12.2) | modelo de capabilities da v2 (`web-in-native.md` §2) |
+| **@electron/fuses** | 2.1.3 | fuses em `web-in-native.md` §3 |
+
+> **UM toolkit por produto** é regra normativa (corpo da skill), não volátil.
 
 ## Empacotamento e assinatura — o que tem prazo
 

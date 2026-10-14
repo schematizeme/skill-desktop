@@ -9,7 +9,7 @@
 > A tese em uma frase: no browser, um XSS rouba a sessão; **aqui, um XSS chama o sistema
 > operacional**. Toda a diferença está em quanto de SO você deixou alcançável a partir do webview.
 >
-> ✔ Verificado em 2026-08-21 contra Tauri 2 e Electron 38. Números de versão e nomes de flag são
+> ✔ Verificado em 2026-10-14 contra Tauri 2 e Electron 42–44 (flags e fuses inalterados; o Electron suportado é sempre as 3 últimas majors). Números de versão e nomes de flag são
 > voláteis — veja `stack-versoes.md`.
 
 ## 1. A regra que vale para os dois
@@ -94,7 +94,7 @@ E na aplicação:
   e `EnableEmbeddedAsarIntegrityValidation`. Sem elas, `ELECTRON_RUN_AS_NODE=1 seu-app.exe
   script.js` roda código arbitrário **com a assinatura e a reputação do seu app**.
 - **Versão do Electron é dívida de segurança com prazo:** o Chromium embutido é seu, não do SO.
-  Ficar duas majors atrás é rodar um browser sem patch (`stack-versoes.md`).
+  Sair das 3 majors suportadas é rodar um browser sem patch (`stack-versoes.md`).
 
 ## 4. O gate
 
